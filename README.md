@@ -1,24 +1,11 @@
 # github_explorer_vue
 
-## Project setup
-```
-yarn install
-```
+To run project, in folder project
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+bash```yarn```,
 
-### Compiles and minifies for production
-```
-yarn build
-```
+then run,
 
-### Lints and fixes files
+bash```
+  yarn serve
 ```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
