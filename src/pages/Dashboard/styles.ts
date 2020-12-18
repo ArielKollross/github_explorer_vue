@@ -39,26 +39,28 @@ export const Form = styled.form`
   }
 `;
 
-export const Repository = styled.div`
+export const Repositories = styled.div`
   margin-top: 80px;
   max-width: 700px;
+`;
 
+export const RepositoryContent = styled.div`
+  display: flex;
+  align-items: center;
 
-  div {
-    display: flex;
-    align-items: center;
+  background: #FFF;
+  border-radius: 5px;
+  width: 100% auto;
+  padding: 24px;
+  margin-bottom: 16px;
 
-    background: #FFF;
-    border-radius: 5px;
-    width: 100% auto;
-    padding: 24px;
-    display: block;
+  transition: transform 0.3s;
 
-    & + div {
-      margin-top: 16px;
-    }
+  :hover {
+    transform: translate(20px);
+  }
 
-    img {
+  img {
       border-radius: 50%;
       width: 64px;
       height: 64px;
@@ -72,6 +74,16 @@ export const Repository = styled.div`
       font-size: 20px;
       color: #3D3D4D;
       }
+
+      p {
+        font-size: 18px;
+        color: #A8A8B3;
+        margin-top: 4px;
+      }
+
+      svg {
+        margin-left: auto;
+        color: #cbcbd6;
+      }
     }
-  }
 `;

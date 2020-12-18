@@ -10,40 +10,43 @@
       >
       <button type="submit">Pesquisar</button>
     </Form>
-        <Repository>
-            <div>
+        <Repositories>
+          <RepositoryContent>
               <img src="https://avatars1.githubusercontent.com/u/6128107?v=4" alt="">
-              <strong>vuejs/vue</strong>
-              <p>🖖 Vue.js is a progressive, incrementally-adoptable JavaScript
-              framework for building UI on the web.</p>
-            </div>
+              <div>
+                <strong>vuejs/vue</strong>
+                <p>🖖 Vue.js is a progressive, incrementally-adoptable JavaScript
+                framework for building UI on the web.</p>
+              </div>
+              <ChevronRightIcon  style="color: #cbcbd6"/>
+          </RepositoryContent>
 
-            <div>
+          <RepositoryContent>
               <img src="https://avatars1.githubusercontent.com/u/6128107?v=4" alt="">
-              <strong>vuejs/vue</strong>
-              <p>🖖 Vue.js is a progressive, incrementally-adoptable JavaScript
-              framework for building UI on the web.</p>
-            </div>
-
-            <div>
-              <img src="https://avatars1.githubusercontent.com/u/6128107?v=4" alt="">
-              <strong>vuejs/vue</strong>
-              <p>🖖 Vue.js is a progressive, incrementally-adoptable JavaScript
-              framework for building UI on the web.</p>
-            </div>
-        </Repository>
+              <div>
+                <strong>vuejs/vue</strong>
+                <p> Descrição do repo</p>
+              </div>
+              <ChevronRightIcon  style="color: #cbcbd6"/>
+          </RepositoryContent>
+        </Repositories>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { Title, Form, Repository } from './styles';
+import { ChevronRightIcon } from 'vue-feather-icons';
+import {
+  Title, Form, Repositories, RepositoryContent,
+} from './styles';
 
 export default Vue.extend({
   components: {
     Title,
     Form,
-    Repository,
+    Repositories,
+    RepositoryContent,
+    ChevronRightIcon,
   },
 });
 </script>
