@@ -10,24 +10,14 @@
       >
       <button type="submit">Pesquisar</button>
     </Form>
-        <Repositories v-for="repository in repositories" :key="repository.id">
-          <!-- <RepositoryContent>
-              <img src="https://avatars1.githubusercontent.com/u/6128107?v=4" alt="">
-              <div>
-                <strong>vuejs/vue</strong>
-                <p>🖖 Vue.js is a progressive, incrementally-adoptable JavaScript
-                framework for building UI on the web.</p>
-              </div>
-              <ChevronRightIcon  style="color: #cbcbd6"/>
-          </RepositoryContent> -->
-
-          <RepositoryContent>
+        <Repositories>
+          <RepositoryContent v-for="repository in repositories" :key="repository.id">
               <img :src="repository.owner.avatar_url" :alt="repository.owner.login">
               <div>
                 <strong>{{repository.full_name}}</strong>
                 <p> {{repository.description}}</p>
               </div>
-              <ChevronRightIcon  style="color: #cbcbd6"/>
+              <ChevronRightIcon  style="color: #cbcbd6" />
           </RepositoryContent>
         </Repositories>
   </div>
@@ -61,7 +51,15 @@ export default Vue.extend({
   data: () => ({
     newRepository: '',
     repositories: [] as RepositoryDTO[],
+    localStoreRepositories: localStorage.getItem('@GithubExplorerVue:repositories'),
   }),
+  created(): void {
+    if (this.localStoreRepositories) {
+      this.repositories = JSON.parse(
+        localStorage.getItem('@GithubExplorerVue:repositories') || '{}',
+      );
+    }
+  },
   methods: {
     async handlerAddRepository(): Promise<void> {
       try {
@@ -69,21 +67,20 @@ export default Vue.extend({
 
         this.repositories.push(response.data);
 
-        console.log(this.repositories);
+        this.saveRepositoryLocalStore();
       } catch (error) {
         console.log(error);
       }
+    },
+    saveRepositoryLocalStore(): void {
+      const parsedRepositories = JSON.stringify(this.repositories);
+      localStorage.setItem('@GithubExplorerVue:repositories', parsedRepositories);
     },
     // async handlerAddRepository(): Promise<void> {
     //   const response = await axiosApi.get(`repos/${this.newRepository}`);
 
     //   return console.log(response.data);
     // },
-  },
-  computed: {
-    setRepositoryLocalStore(): void {
-      return localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(this.repositories));
-    },
   },
 });
 </script>
