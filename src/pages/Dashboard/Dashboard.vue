@@ -76,11 +76,6 @@ export default Vue.extend({
       const parsedRepositories = JSON.stringify(this.repositories);
       localStorage.setItem('@GithubExplorerVue:repositories', parsedRepositories);
     },
-    // async handlerAddRepository(): Promise<void> {
-    //   const response = await axiosApi.get(`repos/${this.newRepository}`);
-
-    //   return console.log(response.data);
-    // },
   },
 });
 </script>
