@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import DashBoard from '@/pages/Dashboard/index.vue';
+import DashBoard from '@/pages/Dashboard/Dashboard.vue';
 
 export default Vue.extend({
   components: {
