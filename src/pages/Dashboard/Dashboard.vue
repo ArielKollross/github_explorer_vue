@@ -2,7 +2,7 @@
   <div>
     <img src="@/assets/githubLogo.svg" alt="Github explorer">
     <Title>Explore repositórios no GitHub.</Title>
-    <Form @submit.prevent="handlerAddRepository">
+    <Form @submit.prevent="handlerAddRepository" :hasError="handlerError" >
       <input
         placeholder="Digite o nome do repositório"
         type="text"
@@ -10,6 +10,9 @@
       >
       <button type="submit">Pesquisar</button>
     </Form>
+
+          <Error>{{ messageErro }}</Error>
+
         <Repositories>
           <RepositoryContent v-for="repository in repositories" :key="repository.id">
               <img :src="repository.owner.avatar_url" :alt="repository.owner.login">
@@ -28,7 +31,7 @@ import Vue from 'vue';
 import { ChevronRightIcon } from 'vue-feather-icons';
 import axiosApi from '@/services/axios';
 import {
-  Title, Form, Repositories, RepositoryContent,
+  Title, Form, Repositories, RepositoryContent, Error,
 } from './styles';
 
 interface RepositoryDTO {
@@ -47,11 +50,14 @@ export default Vue.extend({
     Repositories,
     RepositoryContent,
     ChevronRightIcon,
+    Error,
   },
   data: () => ({
     newRepository: '',
     repositories: [] as RepositoryDTO[],
     localStoreRepositories: localStorage.getItem('@GithubExplorerVue:repositories'),
+    handlerError: false,
+    messageErro: '',
   }),
   created(): void {
     if (this.localStoreRepositories) {
@@ -69,6 +75,8 @@ export default Vue.extend({
 
         this.saveRepositoryLocalStore();
       } catch (error) {
+        this.handlerError = true;
+        this.messageErro = 'Erro na busca por este repositórios';
         console.log(error);
       }
     },

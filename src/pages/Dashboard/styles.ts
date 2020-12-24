@@ -1,5 +1,9 @@
 import styled from 'vue-styled-components';
 
+interface FormProps {
+  hasError: boolean;
+}
+
 export const Title = styled.h1`
   font-size: 48px;
   color: #3a3a3a;
@@ -8,7 +12,9 @@ export const Title = styled.h1`
   margin-top: 80px;
 `;
 
-export const Form = styled.form`
+const FormProps = { hasError: Boolean };
+
+export const Form = styled('form', FormProps)`
   margin-top: 40px;
   max-width: 700px;
 
@@ -23,8 +29,10 @@ export const Form = styled.form`
     border: 2px solid #FFF;
     border-right: 0;
 
+    border-color: ${(props) => (props.hasError ? '#C53030' : '#FFF')};
+
     &::placeholder{
-      color #a8a8b3;
+      color: #a8a8b3;
     }
   }
 
@@ -86,4 +94,10 @@ export const RepositoryContent = styled.div`
         color: #cbcbd6;
       }
     }
+`;
+
+export const Error = styled.span`
+  color: #c53030;
+  margin-top: 8px;
+  display: block
 `;
