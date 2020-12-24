@@ -1,28 +1,31 @@
 <template>
   <div>
-    <img src="@/assets/githubLogo.svg" alt="Github explorer">
+    <img src="@/assets/githubLogo.svg" alt="Github explorer" />
     <Title>Explore repositórios no GitHub.</Title>
-    <Form @submit.prevent="handlerAddRepository" :hasError="handlerError" >
+    <Form @submit.prevent="handlerAddRepository" :hasError="handlerError">
       <input
         placeholder="Digite o nome do repositório"
         type="text"
         v-model.lazy.trim="newRepository"
-      >
+      />
       <button type="submit">Pesquisar</button>
     </Form>
 
-          <Error>{{ messageErro }}</Error>
+    <Error v-show="handlerError">{{ messageErro }}</Error>
 
-        <Repositories>
-          <RepositoryContent v-for="repository in repositories" :key="repository.id">
-              <img :src="repository.owner.avatar_url" :alt="repository.owner.login">
-              <div>
-                <strong>{{repository.full_name}}</strong>
-                <p> {{repository.description}}</p>
-              </div>
-              <ChevronRightIcon  style="color: #cbcbd6" />
-          </RepositoryContent>
-        </Repositories>
+    <Repositories>
+      <RepositoryContent
+        v-for="repository in repositories"
+        :key="repository.id"
+      >
+        <img :src="repository.owner.avatar_url" :alt="repository.owner.login" />
+        <div>
+          <strong>{{ repository.full_name }}</strong>
+          <p>{{ repository.description }}</p>
+        </div>
+        <ChevronRightIcon style="color: #cbcbd6" />
+      </RepositoryContent>
+    </Repositories>
   </div>
 </template>
 
@@ -55,7 +58,9 @@ export default Vue.extend({
   data: () => ({
     newRepository: '',
     repositories: [] as RepositoryDTO[],
-    localStoreRepositories: localStorage.getItem('@GithubExplorerVue:repositories'),
+    localStoreRepositories: localStorage.getItem(
+      '@GithubExplorerVue:repositories',
+    ),
     handlerError: false,
     messageErro: '',
   }),
@@ -82,7 +87,10 @@ export default Vue.extend({
     },
     saveRepositoryLocalStore(): void {
       const parsedRepositories = JSON.stringify(this.repositories);
-      localStorage.setItem('@GithubExplorerVue:repositories', parsedRepositories);
+      localStorage.setItem(
+        '@GithubExplorerVue:repositories',
+        parsedRepositories,
+      );
     },
   },
 });
