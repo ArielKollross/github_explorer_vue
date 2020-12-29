@@ -49,8 +49,12 @@ export const Repositories = styled.div`
 `;
 
 export const RepositoryContent = styled.div`
+
+  a {
   display: flex;
   align-items: center;
+
+  text-decoration: none;
 
   background: #FFF;
   border-radius: 5px;
@@ -59,6 +63,10 @@ export const RepositoryContent = styled.div`
   margin-bottom: 16px;
 
   transition: transform 0.3s;
+
+  & + a {
+  margin-bottom: 16px;
+  }
 
   :hover {
     transform: translate(20px);
@@ -90,6 +98,7 @@ export const RepositoryContent = styled.div`
         color: #cbcbd6;
       }
     }
+  }
 `;
 
 export const Error = styled.span`

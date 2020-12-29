@@ -18,12 +18,14 @@
         v-for="repository in repositories"
         :key="repository.id"
       >
-        <img :src="repository.owner.avatar_url" :alt="repository.owner.login" />
-        <div>
-          <strong>{{ repository.full_name }}</strong>
-          <p>{{ repository.description }}</p>
-        </div>
-        <ChevronRightIcon style="color: #cbcbd6" />
+        <router-link :to=" {name: 'Repository'}">
+          <img :src="repository.owner.avatar_url" :alt="repository.owner.login" />
+          <div>
+            <strong>{{ repository.full_name }}</strong>
+            <p>{{ repository.description }}</p>
+          </div>
+          <ChevronRightIcon style="color: #cbcbd6" />
+        </router-link>
       </RepositoryContent>
     </Repositories>
   </div>
