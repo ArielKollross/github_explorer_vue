@@ -11,6 +11,8 @@ export const Header = styled.header`
 `;
 
 export const RepositoryInfo = styled.div`
+  margin-top: 80px;
+
   header {
     display: flex;
     align-items: center;
@@ -61,4 +63,54 @@ export const RepositoryInfo = styled.div`
       }
     }
   }
+`;
+
+export const Issues = styled.div`
+  margin-top: 80px;
+`;
+
+export const IssuesContent = styled.div`
+
+  a{
+    background: #fff;
+    border-radius: 5px;
+    width: 100%auto;
+    padding: 24px;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+
+    & + a {
+    margin-bottom: 16px;
+    }
+
+    &:hover{
+      transform: translateX(20px);
+    }
+
+  div{
+    margin: 0 16px;
+    flex: 1;
+
+    strong{
+      font-size: 20px;
+      color: #3D3D4D;
+    }
+
+    p{
+      font-size: 18px;
+      color: #A8A8B3;
+      margin-top: 4px;
+    }
+  }
+
+  svg{
+    margin-left: auto;
+    color: #cbcbd6;
+  }
+}
 `;

@@ -39,22 +39,69 @@
         </ul>
 
       </RepositoryInfo>
+
+      <Issues>
+        <IssuesContent
+          v-for="(issue, index) in issues[0]" :key="index"
+        >
+          <router-link to="/" :href="issue.html_url">
+            <div >
+              <strong>{{ issue.title }}</strong>
+              <p>{{ issue.user.login }}</p>
+            </div>
+            <ChevronRightIcon style="color: #cbcbd6" />
+          </router-link>
+        </IssuesContent>
+      </Issues>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { ChevronLeftIcon } from 'vue-feather-icons';
-import { Header, RepositoryInfo } from './styles';
+import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons';
+import axiosApi from '@/services/axios';
+import {
+  Header, RepositoryInfo, Issues, IssuesContent,
+} from './styles';
+
+interface IssueDTO {
+  id: number;
+  title: string;
+  html_url: string;
+  user: {
+    login: string;
+  };
+}
 
 export default Vue.extend({
   components: {
     ChevronLeftIcon,
+    ChevronRightIcon,
     Header,
     RepositoryInfo,
+    Issues,
+    IssuesContent,
   },
-  created(): void {
-    console.log(this.$route);
+  data: () => ({
+    issues: [] as IssueDTO[],
+    repository: '',
+    handlerError: false,
+    messageErro: '',
+  }),
+  async created(): Promise<void> {
+    await this.getIssues();
+  },
+  methods: {
+    async getIssues(): Promise<void> {
+      try {
+        const response = await axiosApi.get(`repos/${this.$route.params.repo_name}/issues`);
+
+        this.issues.push(response.data);
+      } catch (error) {
+        this.handlerError = true;
+        this.messageErro = 'Erro ao buscar isses do repositório';
+      }
+    },
   },
 });
 </script>
