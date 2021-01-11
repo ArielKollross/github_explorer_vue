@@ -18,7 +18,7 @@
         v-for="repository in repositories"
         :key="repository.id"
       >
-        <router-link :to=" {name: 'Repository'}">
+        <router-link :to="{ name: 'Repository', params: { repo_name: repository.full_name }}">
           <img :src="repository.owner.avatar_url" :alt="repository.owner.login" />
           <div>
             <strong>{{ repository.full_name }}</strong>

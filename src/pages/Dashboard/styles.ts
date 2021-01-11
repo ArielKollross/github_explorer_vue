@@ -51,32 +51,28 @@ export const Repositories = styled.div`
 export const RepositoryContent = styled.div`
 
   a {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  background: #FFF;
-  border-radius: 5px;
-  width: 100% auto;
-  padding: 24px;
-  margin-bottom: 16px;
+    background: #FFF;
+    border-radius: 5px;
+    width: 100% auto;
+    padding: 24px;
+    margin-bottom: 16px;
 
-  transition: transform 0.3s;
+    transition: transform 0.3s;
 
-  & + a {
-  margin-bottom: 16px;
-  }
-
-  :hover {
-    transform: translate(20px);
-  }
-
-  img {
-      border-radius: 50%;
-      width: 64px;
-      height: 64px;
+    :hover {
+      transform: translate(20px);
     }
+
+    img {
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+      }
 
     div {
       margin: 0 16px;
