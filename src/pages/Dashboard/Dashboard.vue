@@ -75,6 +75,11 @@ export default Vue.extend({
   },
   methods: {
     async handlerAddRepository(): Promise<void> {
+      if (!this.newRepository) {
+        this.handlerError = true;
+        this.messageErro = 'Digite o autor/nome do repositório';
+      }
+
       try {
         const response = await axiosApi.get(`repos/${this.newRepository}`);
 
