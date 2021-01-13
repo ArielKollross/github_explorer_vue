@@ -13,27 +13,27 @@
       <RepositoryInfo>
         <header>
           <img
-          src="https://avatars2.githubusercontent.com/u/21115260?v=4" alt="">
+          :src="repository.owner.avatar_url" :alt="repository.owner.login">
 
           <div>
-            <strong>Nome/nome_repo</strong>
-            <p>descrição de repo</p>
+            <strong>{{  repository.full_name }}</strong>
+            <p>{{ repository.description }}</p>
           </div>
         </header>
 
         <ul>
           <li>
-            <strong>13</strong>
+            <strong>{{ repository.stargazers_count }}</strong>
             <span>Stars</span>
           </li>
 
           <li>
-            <strong>5</strong>
+            <strong>{{ repository.forks_count }}</strong>
             <span>Forks</span>
           </li>
 
           <li>
-            <strong>4</strong>
+            <strong>{{  repository.open_issues_count }}</strong>
             <span>Issues Abertas</span>
           </li>
         </ul>
@@ -59,10 +59,22 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons';
-import axiosApi from '@/services/axios';
+import api from '@/services/axios';
 import {
   Header, RepositoryInfo, Issues, IssuesContent,
 } from './styles';
+
+interface RepositoryDTO {
+  full_name: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+  open_issues_count: number;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+}
 
 interface IssueDTO {
   id: number;
@@ -90,16 +102,26 @@ export default Vue.extend({
   }),
   async created(): Promise<void> {
     await this.getIssues();
+    await this.getRepository();
   },
   methods: {
     async getIssues(): Promise<void> {
       try {
-        const response = await axiosApi.get(`repos/${this.$route.params.repo_name}/issues`);
+        const response = await api.get(`repos/${this.$route.params.repo_name}/issues`);
 
         this.issues.push(response.data);
       } catch (error) {
         this.handlerError = true;
         this.messageErro = 'Erro ao buscar isses do repositório';
+      }
+    },
+    async getRepository(): Promise<void> {
+      try {
+        const response = await api.get(`repos/${this.$route.params.repo_name}`);
+
+        this.repository = response.data;
+      } catch (error) {
+        console.log(error);
       }
     },
   },

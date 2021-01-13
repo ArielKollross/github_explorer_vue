@@ -34,7 +34,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ChevronRightIcon } from 'vue-feather-icons';
-import axiosApi from '@/services/axios';
+import api from '@/services/axios';
 import {
   Title, Form, Repositories, RepositoryContent, Error,
 } from './styles';
@@ -81,7 +81,7 @@ export default Vue.extend({
       }
 
       try {
-        const response = await axiosApi.get(`repos/${this.newRepository}`);
+        const response = await api.get(`repos/${this.newRepository}`);
 
         this.repositories.push(response.data);
 
