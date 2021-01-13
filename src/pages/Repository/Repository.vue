@@ -2,8 +2,8 @@
   <div>
       <Header>
         <img src="@/assets/githubLogo.svg" alt="Github explorer" />
-        <ChevronLeftIcon style="color: #cbcbd6" />
         <router-link :to="{ name: 'Home'}">
+        <ChevronLeftIcon style="color: #cbcbd6" />
             <span>
             voltar
             </span>
