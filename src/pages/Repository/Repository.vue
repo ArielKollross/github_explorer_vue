@@ -45,13 +45,13 @@
 
       <Issues>
         <IssuesContent v-for="(issue, index) in issues" :key="index">
-          <router-link to="/" :href="issue.html_url">
+          <a :href="issue.html_url">
             <div>
               <strong>{{ issue.title }}</strong>
               <p>{{ issue.user.login }}</p>
             </div>
             <ChevronRightIcon style="color: #cbcbd6" />
-          </router-link>
+          </a>
         </IssuesContent>
       </Issues>
     </div>
