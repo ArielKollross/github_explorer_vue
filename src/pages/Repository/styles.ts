@@ -126,3 +126,16 @@ export const IssuesContent = styled.div`
   }
 }
 `;
+
+export const Loading = styled.div`
+  font-size: 28px;
+  color: #3D3D4D;
+  margin-top: 80px;
+  text-align: center;
+`;
+
+export const Error = styled.span`
+  color: #c53030;
+  margin-top: 8px;
+  display: block
+`;
