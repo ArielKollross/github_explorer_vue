@@ -7,7 +7,7 @@
   </p>
 </h1>
 
-Clone da aplicação **Github Explorer**[github_explorer_react] porposta durante bootcamp da Rockeseat.
+Clone da aplicação **[Github Explorer]** porposta durante bootcamp da Rockeseat.
 
 
 <p align="center">
@@ -75,4 +75,4 @@ Principais bibliotecas
 
 MIT
 
-[github_explorer_react]: <https://github.com/ArielKollross/GoStack/tree/master/level-03/github_explorer>
+[Github Explorer]: <https://github.com/ArielKollross/GoStack/tree/master/level-03/github_explorer>
