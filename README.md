@@ -9,11 +9,11 @@
 
 Clone da aplicação **[Github Explorer]** porposta durante bootcamp da Rockeseat.
 
-
+<br/>
 <p align="center">
   <img width="460" height="300" src="/github/images/dashboard.png">
 </p>
-
+<br/>
 <p align="center">
   <img width="460" height="300" src="github/images/repository.png">
 </p>
