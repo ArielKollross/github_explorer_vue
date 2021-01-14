@@ -1,6 +1,7 @@
 <h1 align="center">
   Github Explorer Vue
-
+  <br/>
+  <br/>
   <p>
     <img src="/src/assets/githubLogo.svg">
   </p>
