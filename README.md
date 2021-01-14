@@ -1,5 +1,9 @@
 <h1 align="center">
   Github Explorer Vue
+
+  <p>
+    <img src="/src/assets/githubLogo.svg">
+  </p>
 </h1>
 
 Clone da aplicação **Github Explorer**[github_explorer_react] porposta durante bootcamp da Rockeseat.
