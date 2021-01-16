@@ -9,11 +9,18 @@
 
 Clone da aplicação **[Github Explorer]** porposta durante bootcamp da Rockeseat.
 
+Nesta aplicação utilizamos a api do github para procurar repositórios e guardar no localstorage. 
+
 <br/>
+<br/>
+
 <p align="center">
   <img width="460" height="300" src="/github/images/dashboard.png">
 </p>
+
 <br/>
+<br/>
+
 <p align="center">
   <img width="460" height="300" src="github/images/repository.png">
 </p>
