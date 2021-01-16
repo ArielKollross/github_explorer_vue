@@ -43,9 +43,7 @@ git clone https://github.com/ArielKollross/github_explorer_vue.git && cd github_
 
 ```sh
 yarn
-
 #ou utilizado npm
-
 npm i
 ```
 
